@@ -6,3 +6,13 @@ packages:
   - name: valkey
     repository: ghcr.io/uds-packages/private/valkey
     ref: 8.1.6-uds.0-unicorn
+    overrides:
+      valkey:
+        uds-valkey-config:
+          variables:
+            - path: additionalNetworkAllow
+              name: ADDITIONAL_NETWORK_ALLOW
+        valkey:
+          variables:
+            - path: auth.enabled
+              name: AUTH_ENABLED

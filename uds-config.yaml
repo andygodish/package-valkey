@@ -1,2 +1,12 @@
 options:
   tmp_dir: /var/tmp
+variables:
+  valkey:
+    ADDITIONAL_NETWORK_ALLOW:
+      - direction: Ingress
+        selector:
+          app.kubernetes.io/name: valkey
+        remoteNamespace: gitea
+        port: 6379
+        description: "Ingress from Gitea"
+    AUTH_ENABLED: false
