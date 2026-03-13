@@ -1,0 +1,31 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "recreateClosed": true,
+
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/\\.ya?ml$/"],
+        "matchStrings": [
+          "(?m)^\\s*- name: PACKAGE_VERSION\\s*\\n\\s*description: \"Version of the package\"\\s*\\n\\s*default: \"(?<currentValue>[^\"]+)\""
+        ],
+        "datasourceTemplate": "github-releases",
+        "depNameTemplate": "uds-packages/valkey",
+        "extractVersionTemplate": "^(?:valkey\\s+)?v?(?<version>\\d+\\.\\d+\\.\\d+-uds\\.\\d+)-(?:upstream|unicorn|registry1)$",
+        "versioningTemplate": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)-uds\\.(?<build>\\d+)$",
+        "matchStringsStrategy": "replace"
+      }
+    ],
+
+  "packageRules": [
+    {
+      "matchManagers": ["custom.regex"],
+      "matchPackageNames": ["uds-packages/valkey"],
+      "groupName": "Valkey Package",
+      "semanticCommitType": "deps",
+      "semanticCommitScope": "valkey",
+      "commitMessageTopic": "Valkey package"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+kind: UDSBundle
+metadata:
+  name: valkey
+  version: 8.1.6-uds.0
+packages:
+  - name: valkey
+    repository: ghcr.io/uds-packages/private/valkey
+    ref: 8.1.6-uds.0-unicorn
