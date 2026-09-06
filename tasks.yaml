@@ -9,7 +9,7 @@ variables:
     default: "valkey"
   - name: PACKAGE_VERSION
     description: "Version of the package"
-    default: "8.1.6-uds.0"
+    default: "8.1.10-uds.0"
   - name: PACKAGE_FLAVOR
     default: "unicorn"
   - name: ARCHITECTURE
